@@ -72,7 +72,7 @@ g[4]=$((${g[4]}+1))
 else
 grade="F" 
 echo $grade
-gf=$(($gf+1))
+g[5]=$((${g[5]}+1))
 fi
 done < rec
 echo ${g[*]}
@@ -80,25 +80,26 @@ for((i=0; i<6; i++))
 do
 if [ $i -eq 0 ]
 then
-echo "A |"
+echo -n "A |"
 elif [ $i -eq 1 ]
 then 
-echo "B |"
+echo -n "B |"
 elif [ $i -eq 2 ]
 then 
-echo "C |"
+echo -n "C |"
 elif [ $i -eq 3 ]
 then 
-echo "D |"
+echo -n "D |"
 elif [ $i -eq 4 ]
 then 
-echo "E |"
+echo -n "E |"
 elif [ $i -eq 5 ]
 then 
-echo "F |"
+echo -n "F |"
 fi
-for((j=0; j<${g[i]}; j++))
+for((j=1; j<=${g[i]}; j++))
 do
-echo "**"
+echo -n "*"
 done
+echo " "
 done

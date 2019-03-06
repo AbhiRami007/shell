@@ -1,0 +1,85 @@
+clear
+
+class1=()
+class2=()
+class3=()
+class4=()
+class5=()
+class6=()
+
+s1=()
+s3=()
+s5=()
+
+a=0
+b=0
+c=0
+c1=0
+k=0
+l=0
+
+while IFS="," read -a rno1 
+do
+s1[$a]=$rno1
+((a++))
+done < s1.csv
+echo ""
+while IFS="," read -a rno3
+do
+s3[$b]=$rno3
+((b++))
+done < s3.csv
+echo ""
+while IFS="," read -a rno5
+do
+s5[$c]=$rno5
+((c++))
+done < s5.csv
+echo ""
+read -p "room1 capacity:" r1
+	for((j=0; j<$r1; j++))
+	do
+	if [[ $(($j%2)) -eq 0 ]]
+	then
+	class1[$c1]=${s1[$k]}
+	((c1++))
+	((k++))
+	else
+	class1[$c1]=${s3[$l]}
+	((c1++))
+	((l++))
+	fi
+	done
+echo ${class1[*]} "" 
+
+read -p "room2 capacity:" r2
+	for((j=0; j<r2; j++))
+	do
+	if [[ $(($j%2)) -eq 0 ]]
+	then
+	class2[$c1]=${s3[$k]}
+	((c1++))
+	((k++))
+	else
+	class2[$c1]=${s5[$l]}
+	((c1++))
+	((l++))
+	fi
+	done
+echo ${class2[*]} "" 
+
+read -p "room3 capacity:" r3
+	for((j=0; j<r3; j++))
+	do
+	if [[ $(($j%2)) -eq 0 ]]
+	then
+	class3[$c1]=${s1[$k]}
+	((c1++))
+	((k++))
+	else
+	class3[$c1]=${s5[$l]}
+	((c1++))
+	((l++))
+	fi
+	done
+echo ${class3[*]} ""		
